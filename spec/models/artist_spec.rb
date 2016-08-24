@@ -46,6 +46,9 @@ describe MusicBrainz::Artist do
     expect(artist.name).to eq "Kasabian"
     expect(artist.country).to eq "GB"
     expect(artist.date_begin.year).to eq 1997
+    expect(artist.tags).to eq ["alternative", "alternative dance", "alternative rock", "british",
+                               "dance-punk", "indie", "indie rock", "indietronica", "neo-psychedelia",
+                               "rock", "rock and indie"]
   end
 
   it "gets correct artist's release groups" do

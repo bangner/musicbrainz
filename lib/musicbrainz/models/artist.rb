@@ -8,6 +8,7 @@ module MusicBrainz
     field :date_begin, Date
     field :date_end, Date
     field :urls, Hash
+    field :tags, Array
 
     def release_groups
       @release_groups ||= client.load(:release_group, { artist: id, inc: [:url_rels] }, {
@@ -19,7 +20,7 @@ module MusicBrainz
 
     class << self
       def find(id)
-        client.load(:artist, { id: id, inc: [:url_rels] }, {
+        client.load(:artist, { id: id, inc: [:url_rels, :tags] }, {
           binding: :artist,
           create_model: :artist
         })
